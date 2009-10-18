@@ -1,0 +1,24 @@
+---
+extension: html
+filter:
+  - haml
+  - erb
+---
+
+!!! Transitional
+%html{:xmlns => "http://www.w3.org/1999/xhtml", :lang => "en", :'xml:lang' => "en"}
+  %head
+    = render(:partial => "/head")
+
+  %body#index.blueprint.api
+    .container.main
+      #top.span-20
+        %h1.title SMS API documentation
+      .span-2.last
+        %h1
+          %em
+            = @page.version
+      = @content
+      = render(:partial => "/footer")
+    #back-to-top
+      %a{ :href => "#top" } back to top

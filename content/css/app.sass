@@ -1,0 +1,274 @@
+--- 
+extension: css 
+filter: sass 
+layout: nil # no layout 
+--- 
+
+@import blueprint/screen.css
+
+!holmesred = #c14032
+!textgr = #231f20
+
+body
+  :background #fff
+  :font-family Georgia,'Times New Roman',serif
+  .main
+  p
+    :font-size 1.27em
+    :line-height 1.63
+    &:first-line
+      :text-transform uppercase
+      :font-size 0.9em
+      :letter-spacing .06em
+    &:first-letter
+      :color = !holmesred
+      :font-weight 700
+  ul
+    li
+      :font-size 1.27em
+  a
+    :text-decoration underline
+    :color #000
+  h2
+    :font-weight 700
+    :font-family Helvetica, Arial, 'sans-serif'
+  h3
+    :font-weight 400
+    :font-family Helvetica, Arial, 'sans-serif'
+    :font-size 1.8em
+    :line-height 1.3em
+  table
+    :font-family Helvetica, Arial, 'sans-serif'
+    th
+      :background-color #DFDFDF
+  h5
+    :font-weight 400
+  #header
+    h1
+      :background transparent url(../images/private-label-sms.png) no-repeat 0 50%
+      a
+        :display block
+        :height 126px
+        :text-indent -9000px
+  #mainNavLarge
+    :background transparent url(../images/nav.png) no-repeat 52% 0
+    :height 217px
+    :text-indent -9000px
+    :display none
+    ul, li
+      :display inline
+      :list-style none
+    li
+      :float left
+      a
+        :display block
+        :height 217px
+  #mainNavSmall
+    :background transparent url(../images/navSmall.png) no-repeat 0 20%
+    :text-indent -9000px
+    :width 380px
+    :height 150px
+    :overflow hidden
+    ul, li
+      :display inline
+      :list-style none
+    li
+      :float left
+      :height 110px
+      .product
+        :width 20px
+      .about
+        :width 87px
+        :margin-left 50px
+      .contact
+        :width 60px
+        :margin-left 46px
+      #current
+        :border-bottom 6px #c14032 solid
+      a
+        :display block
+        :height 108px
+        &:hover, &:active
+          :border-bottom 6px #c14032 solid
+  #headerTextBlock
+    :margin-top 0.5em
+    h2
+      :font-family Georgia, serif
+      :font-weight 400
+      a
+        span
+          :color = !holmesred
+  .contentTextBlock
+    :margin 1em 0 2em
+    p
+      :color= !textgr
+    h5.note
+      :color= !holmesred
+  #imageContainer
+    :background transparent url(../images/graphic.png) no-repeat 58% 0
+    :height 620px
+    :text-indent -9000px
+    :margin-bottom 3em
+    h5
+      a
+        :height 289px
+        :display block
+  #contactBox
+    iframe
+      :width 100%
+      :border none
+  #footer
+    :border-top 1px solid #000
+    :margin-top 170px
+    h4
+      :font-family Helvetica,Arial,'sans-serif'
+      :font-size 1.5em
+      :font-weight 400
+      :color #000
+      :margin-top 1.5em
+    .right
+      :text-align right
+    .holmeslink
+      :text-indent -9000px
+      :background transparent url(../images/poweredby-holmes.png) no-repeat 0 50%
+      :display block
+      :height 70px
+
+
+body#index.api
+  :font-family Helvetica,Arial,'sans-serif'
+  h1
+    :font-size 6em
+    :font-family Georgia,'Times New Roman',serif
+    :margin 0 0 0.5em
+    &.title
+      :color= !holmesred
+  hr.spacer
+    :margin 4em 0
+    :background #FFF
+  #headerTextBlock
+    h2
+      :font-family Helvetica,Arial,'sans-serif'
+      :font-size 3em
+      :margin 0
+      :display inline
+    p
+      :display inline
+      :vertical-align top
+    ul.mainNav
+      li
+        :font-size 2em
+        :list-style none
+      li:before
+        :content "\BB\ "
+  #documentationContent
+    h1
+      :font-size 1.5em
+      :font-weight 700
+      :font-family Helvetica,Arial,'sans-serif'
+      :margin 1em 0
+    h1.subtitle
+      :font-size 2.5em
+    h2
+      :font-size 1.5em
+      :font-weight 400
+      :font-style italic
+    h2.header
+      :font-size 4em
+      :font-weight 700
+      :margin-bottom 0.2em
+      :font-style normal
+      :color= !holmesred
+    ul li ul li
+      :font-size 1em
+  p
+    &:first-line
+      :text-transform none
+    &:first-letter
+      :color = !textgr
+      :font-weight inherit
+#back-to-top
+  :position fixed
+  :background #FFFFFF
+  :bottom 0
+  :padding 1em 1em 0
+  :right 0
+
+
+body#index.textingit
+  :font-family Helvetica,Arial,'sans-serif'
+  h4
+    :font-size 1.5em
+  ul
+    :margin-left 0
+    :margin-top 0
+    li
+      :list-style none
+    li
+      h3
+        :text-indent -9000px
+        :background transparent url(../images/textingit/points_sprite.png) repeat-y 0 0
+        :margin 1.5em 0 0.5em 0
+        :height 44px
+        &.one
+          :background-position 0 0
+        &.two
+          :height 49px
+          :background-position 0 234px
+        &.three
+          :height 54px
+          :background-position 0 186px
+        &.four
+          :background-position 0 132px
+        &.five
+          :background-position 0 88px
+        &.six
+          :background-position 0 44px
+  ul li ul li
+    :font-family Georgia,serif
+    :font-style italic
+    :color #343434
+    :padding-left 40px
+  .light-title
+    :background transparent url(../images/textingit/light-txt_sprite.png) repeat-y 0 0
+    :text-indent -9000px
+    :margin-top 1em
+    :margin-bottom 0
+  .who
+    :background-position 60px 50px
+    a
+      :display block
+      :text-indent -9000px
+      :width 310px
+  .what
+    :font-size 2em
+    :margin-top 0.7em
+  .request
+    :background-position 40px 27px
+    :margin-bottom 1em
+  .logo
+    a
+      :display block
+      :height 3em
+      :background transparent url(../images/textingit/logo.png) repeat-y 0 0
+  .tagline
+    :background transparent url(../images/textingit/tagline.png) repeat-y 0 0
+    :margin 3em 0 3em 0
+    :text-indent -9000px
+    :height 30px
+    :font-size 1.5em
+  ul.nav
+    :margin-bottom 6em
+    li
+      a
+        :background transparent url(../images/textingit/nav.png) repeat-y 0 0
+        :height 45px
+        :display block
+        :margin-bottom 1em
+        :text-indent -9000px
+      a.api-docs
+        :background-position 0 0
+      a.about-us
+        :background-position 0 117px
+      a.blog
+        :background-position 0 45px

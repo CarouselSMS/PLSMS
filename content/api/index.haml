@@ -1,0 +1,116 @@
+---
+pretitle: Textingit by Holmes Mobile &mdash;
+title: SMS API documentation
+created_at: Thu May 28 2009
+filter:
+  - haml
+  - erb
+  - basepath
+layout: api
+extension: html
+dirty: true
+version: 1.3
+---
+
+#headerTextBlock.span-20.prepend-1.append-1.last
+  .span-6.prepend-1
+    %h2
+      %a{ :href => "#api" } API
+    %ul.mainNav
+      %li
+        %a{ :href => "#api-general" } General
+      %li
+        %a{ :href => "#api-keywords" }  Keywords
+      %li
+        %a{ :href => "#api-messaging" }  Messaging
+      %li
+        %a{ :href => "#api-subscriptions" }  Subscriptions
+  .span-6
+    %h2
+      %a{ :href => "#callbacks" }Callbacks
+    %ul.mainNav
+      %li
+        %a{ :href => "#callbacks-general" }  General
+      %li
+        %a{ :href => "#callbacks-sessions" }  Sessions
+      %li
+        %a{ :href => "#callbacks-subscriptions" }  Subscriptions
+  .span-7.last
+    %h2
+      %a{ :href => "#modules" }Modules
+    %ul.mainNav
+      %li
+        %a{ :href => "#modules-general" }  General
+      %li
+        %a{ :href => "#modules-help" }  Help
+      %li
+        %a{ :href => "#modules-static-responses" }  Static Responses
+      %li
+        %a{ :href => "#modules-subscriptions" }  Subscriptions
+      %li
+        %a{ :href => "#modules-welcome" }  Welcome
+  .span-19.prepend-1.last
+    %h2
+      %a{ :href => "#architecture" }Architecture
+    %br
+    %h2
+      %a{ :href => "/images/SLUG1.0.pdf", :title => "Service Layer User's Guide" }Service Layer Users's Guide 1.0 (SLUG)
+    %p (pdf)
+    %br
+    %h2
+      %a{ :href => "javascript: history.go(-1)", :title => "Back to previous page"}
+        %span &larr; 
+        Return to home
+  %hr.spacer
+  .span-9.prepend-1
+    %h3
+      %a{ :href => "mailto:support@holmesmobile.com" }support@holmesmobile.com
+  .span-10.last
+    %h3 Call us at (925) 246-5637 (9252-HOLMES)
+%hr.spacer
+#documentationContent
+  #api.span-20.prepend-1.append-1.last
+    %h2.header API
+    #api-general
+      %h1.subtitle General
+      = render :partial => "api/api/general"
+    #api-keywords
+      %h1.subtitle Keywords
+      = render :partial => "api/api/keywords"
+    #api-messaging
+      %h1.subtitle Messaging
+      = render :partial => "api/api/messaging"
+    #api-subscriptions
+      %h1.subtitle Subscriptions
+      = render :partial => "api/api/subscriptions"
+  #callbacks.span-20.prepend-1.append-1.last
+    %h2.header Callbacks
+    #callbacks-general
+      %h1.subtitle General
+      = render :partial => "api/callbacks/general"
+    #callbacks-sessions
+      %h1.subtitle Sessions
+      = render :partial => "api/callbacks/sessions"
+    #callbacks-subscriptions
+      %h1.subtitle Subscriptions
+      = render :partial => "api/callbacks/subscriptions"
+  #modules.span-20.prepend-1.append-1.last
+    %h2.header Modules
+    #modules-general
+      %h1.subtitle General
+      = render :partial => "api/modules/general"
+    #modules-help
+      %h1.subtitle Help
+      = render :partial => "api/modules/help"
+    #modules-static-responses
+      %h1.subtitle Static Responses
+      = render :partial => "api/modules/static-responses"
+    #modules-subscriptions
+      %h1.subtitle Subscriptions
+      = render :partial => "api/modules/subscriptions"
+    #modules-welcome
+      %h1.subtitle Welcome
+      = render :partial => "api/modules/welcome"
+  #architecture.span-20.prepend-1.append-1.last
+    %h2.header Architecture
+    = render :partial => "api/architecture"

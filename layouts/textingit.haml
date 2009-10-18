@@ -1,0 +1,26 @@
+---
+extension: html
+filter:
+  - haml
+  - erb
+---
+
+!!! Transitional
+%html{:xmlns => "http://www.w3.org/1999/xhtml", :lang => "en", :'xml:lang' => "en"}
+  %head
+    %meta{:'http-equiv' => "Content-Type", :content => "text/html; charset=utf-8"}
+    %meta{:name => "lang", :content => "en"}
+    %meta{:name => "description", :content => "Textingit is a shortcode SMS API."}
+    %meta{:name => "keywords", :content => "shortcode, SMS, API, text-messaging"}
+    %link{ :rel => "shortcut icon", :href => "http://privatelabelsms.com/images/favicon.ico" }
+    %link{ :href => "http://privatelabelsms.com/css/app.css", :rel => "stylesheet", :type => "text/css", :media => "screen, projection" }
+    /[if IE]
+      %link{ :href => "http://privatelabelsms.com/css/blueprint/ie.css", :rel => "stylesheet", :type => "text/css", :media => "screen, projection" }
+    %title
+      = @page.pretitle
+      = @page.title
+
+  %body#index.blueprint.textingit
+    .container.main
+      = @content
+      = render(:partial => "/footer_textingit")

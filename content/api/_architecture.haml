@@ -1,0 +1,117 @@
+---
+filter:
+  - textile
+updated: 04 Dec 2008
+version: 7
+---
+
+h1. Purpose and Responsibilities
+
+Service Layer lays in the heart of the system. The goals of the Service Layer are:
+
+* Control the workflow of applications with modules
+* Direct messages to and from the applications
+* Maintain the list of applications and user sessions, and link the two
+
+
+h1. High-level Design
+
+The high-level design of the system is presented on the first page of the document attached ( "Service Layer.pdf":/images/Service_Layer.pdf ). You can clearly see that the system is composed of three main parts: the database, service layer and web-based front-end.
+
+Service Layer is intended to communicate with Kannel and client applications acting as a midware and controlling the workflow. The web-based front-end is the so-called "face" of the system that is used to configure, manage and monitor the system.
+
+
+h2. Clients and Applications
+
+* The Client is a registered entity owning some applications that use Service Layer services to receive and send messages to the mobile users / devices.
+
+* Every Client can have multiple Applications registered. Each Application has its own URL and an identification key. These two bits of information are used to communicate between the Application and the Service Layer.
+
+* All traffic between an Application and the Service Layer is recorded in the database (MO and MT tables holding incoming and outgoing messages). This info is used to generate usage reports and do proper volume-based billing.
+
+* Registration of Clients can be:
+** Self-served - Clients can use the web front-end to register themselves and their Applications
+** Staff-based - company staff can register Clients and their Applications
+
+
+h2. Service Plans and Billing
+
+Each Client (Application) can be assigned a certain service plan that specifies the prices and (maybe later) available features. Currently there's a need to have two plans, but the number can grow with time. It's even possible that current requirement can be reduced to a single plan.
+
+
+h1. Web-based Front End
+
+Service Layer, as a module, has no graphical interface. Although there's a web-based front-end that the clients of the system and staff use to:
+
+* register new clients
+* register applications
+* choose appropriate modules from available to be used with the applications (for example, subscriptions module or static responses)
+* see reports and billing info
+
+The front-end works with the same database as the Service Layer. Even though the front-end and the Service Layer can be fit into the boundaries of the same web application, it's suggested to think of them as of two different modules to aid proper separation of concepts and responsibilities.
+
+
+h1. Building Applications
+
+h2. General Information
+
+Building user applications with an operating Service Layer is extremely easy. It's necessary to understand though that an Application is external to the Service Layer. Service Layer contains no logic specific to any application, but rather abstract common information usually in the form of the workflows.
+
+What is a workflow? A Workflow represents some common logic of the application. For example, many applications use the same logic of providing the response to the HELP message, as well as many applications provide means of SUBSCRIBING and UNSUBSCRIBING to/from some service. These typical scenarios can be handled by the middleware (Service Layer) once it's instructed about what to do when a certain event happens (what text to show in response to the HELP message, and what URL to use to notify about new subscriptions). A proper workflow can be selected for each application through selecting and configuring any of provided modules.
+
+<img src="/images/Service_Layer_and_Applications.png" alt="Service Layer and Applications" />
+
+h2. API
+
+The two-way communication between an Application and the Service Layer is required. By this I mean that the initiator of the exchange can be both the Service Layer (an external message has arrived and an action from the Application is required) and the Application (something happened on the Application side and messages have to be delivered). This requirement dictates that there have to be at least two URL's known to the developer of an application:
+
+* The URL on the server running the application that will be used by the Service Layer to deliver incoming messages and callbacks (Gateway URL). This URL can have an arbitrary format, like:
+
+<code>http://myserver.com/notification.php</code>
+
+* The URL on the Service Layer server that will be used by the application when it needs to send the messages. To identify the application and provide the means for minimum security the key has to be generated that will be appended to the service URL. To illustrate the point, here's the sample URL:
+
+<code>http://sl.holmeslabs.com/api/...?api_key=<key></code>
+
+
+
+h2. Receiving MO's from Service Layer (type = incoming_message)
+
+
+As you already know, Gateway URL is used to communicate from the Service Layer to the Application when a new MO is to be delivered. Service Layer makes a POST HTTP request and provides the following data:
+
+* type = incoming_message
+* phone_number - cell number from which the message was sent
+* body - body of the message
+* sent_at - time when the message was sent from the cell (integer timestamp)
+* carrier_id - (optional, available if carrier was detected) carrier ID
+* carrier_name - (optional, available if carrier was detected) carrier name
+
+All MO's are stored on the Service Layer side for billing and any reviews.
+
+
+
+h2. Sending response MT's to Service Layer
+
+After processing of the Gateway URL request, an Application has two options:
+
+* Return the text of the message to be delivered to a originating cell
+* Return empty string to indicate no response
+
+
+h2. Data Exchange Format
+
+We agreed that in order to make the service as simple and as accessible as possible, simple and accessible data transmission formats are to be used. By these formats I mean JSON and possibly XML-RPC. There will be a known degree of flexibility in choosing the format a client wants to work with, and it will be possible to add new formats later.
+
+It's assumed that the chosen format will be used to send data in both directions, but it's also very easy to change.
+
+The layout of the messages still has to be defined.
+
+
+h1. Suggested Technologies
+
+* NGINX - lightweight web server to serve the static content (images, scripts, stylesheets) and to act as a proxy to the mongrel cluster
+* Mongrel Cluster - to serve dynamic content only
+* Mysql Database - to hold application data
+
+Why not Apache? Apache has a feature which is nice and dangerous at the same time -- worker threads reusing. It's nice because it uses the same worker threads over and over to process requests and return responses. It's dangerous because the threads grow in size allocating memory. Initially, the server starts with minimum memory requirements. To serve an image it takes, say 100Kb of memory. Now the same worker is used to respond to a dynamic call and allocates 5Mb of memory. Since it never releases this memory (under load if threads don't have time to terminate and be re-created, or the minimum pool size is set to some value), soon all workers due to the reusing feature will be of the maximum size (5Mb in our example). NGINX + Mongrel Cluster solves this problem. NGINX is used to send these little files quickly, while giving the heavier requests to Mongrels.

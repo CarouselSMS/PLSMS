@@ -1,0 +1,67 @@
+---
+filter:
+  - textile
+updated: 13 May 2009
+version: 7
+---
+
+Client applications receive callbacks from the Service Layer through their Gateway URL. There are difference callbacks that let the application know of certain events with the user sessions, subscriptions and more.
+
+h1. Format
+
+Callback date and type are set as individual fields in the POST request to the client application. Field "type" contains the name / type of the function, and other fields contain additional information that may be useful to the application in its processing of the callback -- phone numbers, message bodies and other parameters.
+
+h1. Implementation on the Client Application side
+
+Callbacks aren't required to be implemented. In fact, you can ignore all of them, although this application may be not very useful. We imagine that you will want to at least listen to incoming messages through the "incoming_message" callback.
+
+h2. Responses
+
+Some of callbacks have optional responses expected, such as the list of tags to assign to a newly created subscription (see subscription_created callback). The format of the response is currently set to the plain text, but later this may be changed to the JSON. This step may be required to facilitate rich and structured responses.
+
+h2. Processing
+
+It's suggested that you process the callback as fast as possible on the client application side to release Service Layer resources.
+
+h1. Incoming Message (incoming_message)
+
+Received when new MO arrives and it's routed to this client application.
+
+When the message initiates the session and the keyword that was a match is marked as for the auto-subscription, the "auto-subscribe" flag is set meaning that after this callback is processed there will be an automatic subscription of the texter performed by the service layer. As the result of this process, there will be a subscription confirmation message sent to the texter, meaning that you may decide not to send a normal response from this (incoming_message) call to avoid sending two messages.
+
+If the message is marked as "auto_responded", it means that the texter has already received the message that was associated with the keyword. You may choose to send another message or stay silent to avoid duplicates.
+
+Parameters:
+
+* type = incoming_message
+* phone_number - phone number of a texter
+* body - message body
+* sent_at - origination timestamp
+* auto_subscribe - (optional, boolean) flags that this message initiated the session with auto-subscription
+* auto_responded - (optional, boolean) flags that this message was already responded with the keyword-associated message
+* carrier_id - (optional) carrier ID
+* carrier_name - (optional) carrier name
+
+Responses:
+
+* Empty response not to send anything back to the texter
+* The message to send
+
+
+
+h1. Delivery report (delivery_report)
+
+When the message is sent with send_message (either in the future or immediately), the list of message IDs is returned. Each ID represents the part of the original message if it was larger than the maximum allowed number of characters in the single SMS message.
+
+Parameters:
+
+* message_id - ID of the message the status of which has changed
+* final - (boolean) TRUE if this report is final and no updates are to be expected
+* status - new status of the message, where possible values are:
+** *0* - Pending
+** *1* - Delivered
+** *2* - Delivery failed
+
+Responses:
+
+* Ignored. This is a one-way fire and forget notification.
