@@ -8,17 +8,19 @@ layout: nil # no layout
 
 !holmesred = #c14032
 !textgr = #231f20
+!sans = "Helvetica, Arial, sans-serif"
+!serif = "Georgia,'Times New Roman',serif"
 
 body
   :background #fff
-  :font-family Georgia,'Times New Roman',serif
+  :font-family= !serif
   p
     :font-size 1.27em
     :line-height 1.63
     &:first-line
       :text-transform uppercase
       :font-size 0.9em
-      :letter-spacing .06em
+      :letter-spacing 0.06em
     &:first-letter
       :color = !holmesred
       :font-weight 700
@@ -28,26 +30,30 @@ body
   a
     :text-decoration underline
     :color #000
+    &:hover
+      :color= !textgr
+    &:visited. &:linked
+      :color #000
   h2
     :font-weight 700
-    :font-family Helvetica, Arial, 'sans-serif'
+    :font-family= !sans
   h3
     :font-weight 400
-    :font-family Helvetica, Arial, 'sans-serif'
+    :font-family= !sans
     :font-size 1.8em
     :line-height 1.3em
   h4
-    :font-family Helvetica, Arial, 'sans-serif'
+    :font-family= !sans
     :font-size 1.2em
     :font-weight 700
   body > h4.subheader
     :margin-top -1em   
   table
-    :font-family Helvetica, Arial, 'sans-serif'
+    :font-family= !sans
     th
       :background-color #DFDFDF
   h5
-    :font-family Helvetica, Arial, 'sans-serif'
+    :font-family= !sans
     :font-weight 400
   #header
     h1
@@ -90,20 +96,24 @@ body
         :width 60px
         :margin-left 46px
       #current
-        :border-bottom 6px #c14032 solid
+        :border-bottom 6px #c14032 "solid"
       a
         :display block
         :height 108px
         &:hover, &:active
-          :border-bottom 6px #c14032 solid
+          :border-bottom 6px #c14032 "solid"
   #headerTextBlock
     :margin-top 0.5em
     h2
-      :font-family Georgia, serif
+      :font-family= !serif
       :font-weight 400
       a
+        &:hover
+          :color= !textgr
         span
           :color = !holmesred
+          &:hover
+            :color #000
   .contentTextBlock
     :margin 1em 0 2em
     p
@@ -127,7 +137,7 @@ body
     :border-top 1px solid #000
     :margin-top 170px
     h4
-      :font-family Helvetica,Arial,'sans-serif'
+      :font-family= !sans
       :font-size 1.5em
       :font-weight 400
       :color #000
@@ -140,12 +150,11 @@ body
       :display block
       :height 70px
 
-
 body#index.api
-  :font-family Helvetica,Arial,'sans-serif'
+  :font-family= !sans
   h1
     :font-size 6em
-    :font-family Georgia,'Times New Roman',serif
+    :font-family= !serif
     :margin 0 0 0.5em
     &.title
       :color= !holmesred
@@ -154,7 +163,7 @@ body#index.api
     :background #FFF
   #headerTextBlock
     h2
-      :font-family Helvetica,Arial,'sans-serif'
+      :font-family= !sans
       :font-size 3em
       :margin 0
       :display inline
@@ -171,7 +180,7 @@ body#index.api
     h1
       :font-size 1.5em
       :font-weight 700
-      :font-family Helvetica,Arial,'sans-serif'
+      :font-family= !sans
       :margin 1em 0
     h1.subtitle
       :font-size 2.5em
@@ -195,14 +204,13 @@ body#index.api
       :font-weight inherit
 #back-to-top
   :position fixed
-  :background #FFFFFF
+  :background #FFF
   :bottom 0
   :padding 1em 1em 0
   :right 0
 
-
 body#index.textingit
-  :font-family Helvetica,Arial,'sans-serif'
+  :font-family= !sans
   h4
     :font-size 1.5em
   ul
@@ -217,21 +225,21 @@ body#index.textingit
         :margin 1.5em 0 0.5em 0
         :height 44px
         &.one
-          :background-position 0 0
+          :background-position 0 378px
         &.two
           :height 49px
-          :background-position 0 234px
+          :background-position 0 314px
         &.three
           :height 54px
-          :background-position 0 186px
+          :background-position 0 246px
         &.four
-          :background-position 0 132px
+          :background-position 0 172px
         &.five
-          :background-position 0 88px
+          :background-position 0 108px
         &.six
           :background-position 0 44px
   ul li ul li
-    :font-family Georgia,serif
+    :font-family= !serif
     :font-style italic
     :color #343434
     :padding-left 40px
@@ -241,7 +249,7 @@ body#index.textingit
     :margin-top 1em
     :margin-bottom 0
   .who
-    :background-position 60px 50px
+    :background-position 60px 70px
     a
       :display block
       :text-indent -9000px
@@ -249,6 +257,7 @@ body#index.textingit
   .what
     :font-size 2em
     :margin-top 0.7em
+    :background-position 0 -9px
   .request
     :background-position 40px 27px
     :margin-bottom 1em
@@ -267,14 +276,20 @@ body#index.textingit
     :margin-bottom 6em
     li
       a
-        :background transparent url(../images/textingit/nav.png) repeat-y 0 0
+        :background transparent url(../images/textingit/nav.png) repeat 0 0
         :height 45px
         :display block
         :margin-bottom 1em
         :text-indent -9000px
       a.api-docs
         :background-position 0 0
+        &:hover
+          :background-position 242px 0
       a.about-us
         :background-position 0 117px
+        &:hover
+          :background-position 285px 117px
       a.blog
         :background-position 0 45px
+        &:hover
+          :background-position 175px 45px
