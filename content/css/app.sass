@@ -31,9 +31,7 @@ body
     :text-decoration underline
     :color #000
     &:hover
-      :color= !textgr
-    &:visited. &:linked
-      :color #000
+      :text-decoration none
   h2
     :font-weight 700
     :font-family= !sans
@@ -96,12 +94,12 @@ body
         :width 60px
         :margin-left 46px
       #current
-        :border-bottom 6px #c14032 "solid"
+        :border-bottom= 6px "solid" !holmesred
       a
         :display block
         :height 108px
         &:hover, &:active
-          :border-bottom 6px #c14032 "solid"
+          :border-bottom= 6px "solid" !holmesred
   #headerTextBlock
     :margin-top 0.5em
     h2
