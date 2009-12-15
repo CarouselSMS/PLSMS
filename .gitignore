@@ -1,1 +1,20 @@
-output/*
+tmp
+.DS_Store
+
+# generated files (Windows)
+thumbs.db
+Thumbs.db
+
+# backup files
+*.bak
+
+# temp files
+\#*
+*~
+*.swp
+
+# SASS cache dir
+.sass-cache
+
+# Output
+output
