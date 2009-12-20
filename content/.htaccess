@@ -1,0 +1,12 @@
+<Files ~ "^.(htaccess|htpasswd)$">
+deny from all
+</Files>
+Options Indexes
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^(privatelabelsms\.com)(:80)? [NC]
+RewriteRule ^(.*) http://privatelabelsms.com/$1 [R=301,L]
+RewriteBase /
+DirectoryIndex index.html index.htm index.php  
+order deny,allow
+# disable directory browsing
+Options All -Indexes
