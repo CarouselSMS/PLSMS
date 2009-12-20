@@ -3,7 +3,7 @@ deny from all
 </Files>
 Options Indexes
 RewriteEngine on
-RewriteCond %{HTTP_HOST} ^(privatelabelsms\.com)(:80)? [NC]
+RewriteCond %{HTTP_HOST} ^(www.privatelabelsms\.com)(:80)? [NC]
 RewriteRule ^(.*) http://privatelabelsms.com/$1 [R=301,L]
 RewriteBase /
 DirectoryIndex index.html index.htm index.php  
