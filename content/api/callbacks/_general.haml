@@ -1,7 +1,7 @@
 ---
 filter:
   - textile
-updated: 13 May 2009
+updated: 13 Mar 2010
 version: 7
 ---
 
@@ -58,9 +58,10 @@ Parameters:
 * message_id - ID of the message the status of which has changed
 * final - (boolean) TRUE if this report is final and no updates are to be expected
 * status - new status of the message, where possible values are:
-** *0* - Pending
+** *0* - Pending delivery
 ** *1* - Delivered
 ** *2* - Delivery failed
+** *4* - Queued for delivery
 
 Responses:
 

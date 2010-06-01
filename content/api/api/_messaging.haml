@@ -1,8 +1,8 @@
 ---
 filter:
   - textile
-updated: 11 May 2009
-version: 6
+updated: 15 Feb 2010
+version: 8
 ---
 
 h1. Send Message (send_message)
@@ -13,7 +13,7 @@ If an application needs to send a message to a certain phone number, it uses thi
 * (2/3) ... continuation ...
 * (3/3) ... the ending.
 
-Scheduled messages are sent in batches every 15 minutes. The format of the date ("on" field) may vary from very strict &ldquo;10/12/2008 12:55AM -0500&rdquo; to the relaxed &ldquo;Tuesday 9 1:15PM&rdquo;. If the timezone isn&rsquo;t specified, the EST (GMT-5) is assumed.
+Scheduled messages are sent in batches every 15 minutes. The format of the date ("on" field) may vary from very strict “10/12/2008 12:55AM -0500” to the relaxed “Tuesday 9 1:15PM”. If the timezone isn’t specified, the EST (GMT-5) is assumed.
 
 *Split Modes:*
 
@@ -28,7 +28,7 @@ When message breaking is necessary, it can be performed in one of three predefin
 Parameters:
 
 * api_key         - (String) API key of the application
-* phone_number    - (String) target phone number (10 digits with or without country code)
+* phone_number or phone_numbers - (String) destination phone number (10 digits with or without country code) or a comma-separated list of phone numbers.
 * body            - (String) message text
 * action_expected - (Boolean, Optional) send TRUE if the response from the target phone is expected. In this case, the session between the phone and the Application is established for seamless directing of the response MO's to the application without the need of sending the Keyword to select the Application first.
 * on              - (String, Optional) time when the message is to be sent
@@ -38,6 +38,32 @@ Responses:
 * HTTP Code 500 and error message in the body
 * HTTP Code 200
 ** Comma-separated list of scheduled message IDs is returned with the "message_ids" key. This is useful for matching sent messages with delivery reports and message cancellation.
+
+
+
+h1. Send Messages (send_messages)
+
+Sometimes you need to send several slightly different messages to several phone numbers. You could issue multiple "send_message" requests, but there's a better way. Basically, you specify a template to use as a basis for your messages and then for each number you only give the different parts to paste into the template for each number. Here's an example:
+
+* template = "Hello {{name}}. You have {{credits}} credits left."
+* recipients = '{"0123456789": {"name": "John", "credits": "5"}, "9876543210": {"name": "Mary", "credits": "10"}}'
+
+The phone number 0123456789 will receive "Hello John. You have 5 credits left." and the phone number 9876543210 will receive "Hello Mary. You have 10 credits left."
+
+Parameters:
+
+* api_key         - (String) API key of the application
+* template        - (String) template string to use for generation of recipient messages.
+* recipients      - (String) JSON-hash with phone numbers (10 digits) as keys and the substitution hash as values. Each substitution hash contains the names of tags you mentioned in the template body as keys and the replacement values as values.
+* action_expected - (Boolean, Optional) send TRUE if the response from the target phone is expected. In this case, the session between the phone and the Application is established for seamless directing of the response MO's to the application without the need of sending the Keyword to select the Application first.
+* on              - (String, Optional) time when the message is to be sent
+
+Responses:
+
+* HTTP Code 500 and error message in the body
+* HTTP Code 200
+** Comma-separated list of scheduled message IDs is returned with the "message_ids" key. This is useful for matching sent messages with delivery reports and message cancellation.
+
 
 
 
