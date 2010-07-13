@@ -2,292 +2,300 @@
 extension: css 
 filter: sass 
 layout: nil # no layout 
---- 
+---
 
 @import blueprint/screen.css
 
-!holmesred = #c14032
-!textgr = #231f20
-!sans = "Helvetica, Arial, sans-serif"
-!serif = "Georgia,'Times New Roman',serif"
+$holmesred: #c14032
+$textgr: #231f20
+$sans: unquote("Helvetica, Arial, sans-serif")
+$serif: unquote("Georgia,'Times New Roman',serif")
 
 body
-  :background #fff
-  :font-family= !serif
+  background: white
+  font-family: $serif
   p
-    :font-size 1.27em
-    :line-height 1.63
+    font-size: 1.27em
+    line-height: 1.63
     &:first-line
-      :text-transform uppercase
-      :font-size 0.9em
-      :letter-spacing 0.06em
+      text-transform: uppercase
+      font-size: 0.9em
+      letter-spacing: 0.06em
     &:first-letter
-      :color = !holmesred
-      :font-weight 700
+      color: $holmesred
+      font-weight: 700
+    span:first-letter
+      color: inherit
   ul
     li
-      :font-size 1.27em
+      font-size: 1.27em
   a
-    :text-decoration underline
-    :color #000
+    text-decoration: underline
+    color: black
     &:hover
-      :text-decoration none
+      text-decoration: none
   h2
-    :font-weight 700
-    :font-family= !sans
+    font-weight: 700
+    font-family: $sans
   h3
-    :font-weight 400
-    :font-family= !sans
-    :font-size 1.8em
-    :line-height 1.3em
+    font-weight: 400
+    font-family: $sans
+    font-size: 1.8em
+    line-height: 1.3em
   h4
-    :font-family= !sans
-    :font-size 1.2em
-    :font-weight 700
+    font-family: $sans
+    font-size: 1.2em
+    font-weight: 700
   body > h4.subheader
-    :margin-top -1em   
+    margin-top: -1em
   table
-    :font-family= !sans
+    font-family: $sans
     th
-      :background-color #DFDFDF
+      background-color: #dfdfdf
   h5
-    :font-family= !sans
-    :font-weight 400
+    font-family: $sans
+    font-weight: 400
   #header
     h1
-      :background transparent url(../images/private-label-sms.png) no-repeat 0 50%
+      background: transparent url(../images/private-label-sms.png) no-repeat 0 50%
       a
-        :display block
-        :height 126px
-        :text-indent -9000px
+        display: block
+        height: 126px
+        text-indent: -9000px
   #mainNavLarge
-    :background transparent url(../images/nav.png) no-repeat 52% 0
-    :height 217px
-    :text-indent -9000px
-    :display none
+    background: transparent url(../images/nav.png) no-repeat 52% 0
+    height: 217px
+    text-indent: -9000px
+    display: none
     ul, li
-      :display inline
-      :list-style none
+      display: inline
+      list-style: none
     li
-      :float left
+      float: left
       a
-        :display block
-        :height 217px
+        display: block
+        height: 217px
   #mainNavSmall
-    :background transparent url(../images/navSmall.png) no-repeat 0 20%
-    :text-indent -9000px
-    :width 380px
-    :height 150px
-    :overflow hidden
+    background: transparent url(../images/navSmall.png) no-repeat 0 20%
+    text-indent: -9000px
+    width: 380px
+    height: 150px
+    overflow: hidden
     ul, li
-      :display inline
-      :list-style none
+      display: inline
+      list-style: none
     li
-      :float left
-      :height 110px
+      float: left
+      height: 110px
       .product
-        :width 20px
+        width: 20px
       .about
-        :width 87px
-        :margin-left 50px
+        width: 87px
+        margin-left: 50px
       .contact
-        :width 60px
-        :margin-left 46px
+        width: 60px
+        margin-left: 46px
       #current
-        :border-bottom= 6px "solid" !holmesred
+        border-bottom: 6px solid $holmesred
       a
-        :display block
-        :height 108px
+        display: block
+        height: 108px
         &:hover, &:active
-          :border-bottom= 6px "solid" !holmesred
+          border-bottom: 6px solid $holmesred
   #headerTextBlock
-    :margin-top 0.5em
+    margin-top: 0.5em
     h2
-      :font-family= !serif
-      :font-weight 400
+      font-family: $serif
+      font-weight: 400
       a
         &:hover
-          :color= !textgr
+          color: $textgr
         span
-          :color = !holmesred
+          color: $holmesred
           &:hover
-            :color #000
+            color: black
   .contentTextBlock
-    :margin 1em 0 2em
+    margin: 1em 0 2em
     p
-      :color= !textgr
+      color: $textgr
     h5.note
-      :color= !holmesred
+      color: $holmesred
   #imageContainer
-    :background transparent url(../images/graphic.png) no-repeat 58% 0
-    :height 620px
-    :text-indent -9000px
-    :margin-bottom 3em
+    background: transparent url(../images/graphic.png) no-repeat 58% 0
+    height: 620px
+    text-indent: -9000px
+    margin-bottom: 3em
     h5
       a
-        :height 289px
-        :display block
+        height: 289px
+        display: block
   #contactBox
     iframe
-      :width 100%
-      :border none
+      width: 100%
+      border: none
   #footer
-    :border-top 1px solid #000
-    :margin-top 170px
+    border-top: 1px solid black
+    margin-top: 170px
     h4
-      :font-family= !sans
-      :font-size 1.5em
-      :font-weight 400
-      :color #000
-      :margin-top 1.5em
+      font-family: $sans
+      font-size: 1.5em
+      font-weight: 400
+      color: black
+      margin-top: 1.5em
     .right
-      :text-align right
+      text-align: right
     .holmeslink
-      :text-indent -9000px
-      :background transparent url(../images/poweredby-holmes.png) no-repeat 0 50%
-      :display block
-      :height 70px
+      text-indent: -9000px
+      background: transparent url(../images/poweredby-holmes.png) no-repeat 0 50%
+      display: block
+      height: 70px
+    p:first-letter, p span:first-letter
+      color: inherit
 
 body#index.api
-  :font-family= !sans
+  font-family: $sans
   h1
-    :font-size 6em
-    :font-family= !serif
-    :margin 0 0 0.5em
+    font-size: 6em
+    font-family: $serif
+    margin: 0 0 0.5em
     &.title
-      :color= !holmesred
+      color: $holmesred
   hr.spacer
-    :margin 4em 0
-    :background #FFF
+    margin: 4em 0
+    background: white
   #headerTextBlock
     h2
-      :font-family= !sans
-      :font-size 3em
-      :margin 0
-      :display inline
+      font-family: $sans
+      font-size: 3em
+      margin: 0
+      display: inline
     p
-      :display inline
-      :vertical-align top
+      display: inline
+      vertical-align: top
     ul.mainNav
       li
-        :font-size 2em
-        :list-style none
+        font-size: 2em
+        list-style: none
       li:before
-        :content "\BB\ "
+        content: "\BB\ "
   #documentationContent
     h1
-      :font-size 1.5em
-      :font-weight 700
-      :font-family= !sans
-      :margin 1em 0
+      font-size: 1.5em
+      font-weight: 700
+      font-family: $sans
+      margin: 1em 0
     h1.subtitle
-      :font-size 2.5em
+      font-size: 2.5em
     h2
-      :font-size 1.5em
-      :font-weight 400
-      :font-style italic
+      font-size: 1.5em
+      font-weight: 400
+      font-style: italic
     h2.header
-      :font-size 4em
-      :font-weight 700
-      :margin-bottom 0.2em
-      :font-style normal
-      :color= !holmesred
+      font-size: 4em
+      font-weight: 700
+      margin-bottom: 0.2em
+      font-style: normal
+      color: $holmesred
     ul li ul li
-      :font-size 1em
+      font-size: 1em
   p
     &:first-line
-      :text-transform none
+      text-transform: none
     &:first-letter
-      :color = !textgr
-      :font-weight inherit
+      color: $textgr
+      font-weight: inherit
+  #footer
+    p:first-letter, p span:first-letter
+      color: inherit
+
 #back-to-top
-  :position fixed
-  :background #FFF
-  :bottom 0
-  :padding 1em 1em 0
-  :right 0
+  position: fixed
+  background: white
+  bottom: 0
+  padding: 1em 1em 0
+  right: 0
 
 body#index.textingit
-  :font-family= !sans
+  font-family: $sans
   h4
-    :font-size 1.5em
+    font-size: 1.5em
   ul
-    :margin-left 0
-    :margin-top 0
+    margin-left: 0
+    margin-top: 0
     li
-      :list-style none
+      list-style: none
     li
       h3
-        :text-indent -9000px
-        :background transparent url(../images/textingit/points_sprite.png) repeat-y 0 0
-        :margin 1.5em 0 0.5em 0
-        :height 44px
+        text-indent: -9000px
+        background: transparent url(../images/textingit/points_sprite.png) repeat-y 0 0
+        margin: 1.5em 0 0.5em 0
+        height: 44px
         &.one
-          :background-position 0 378px
+          background-position: 0 378px
         &.two
-          :height 49px
-          :background-position 0 314px
+          height: 49px
+          background-position: 0 314px
         &.three
-          :height 54px
-          :background-position 0 246px
+          height: 54px
+          background-position: 0 246px
         &.four
-          :background-position 0 172px
+          background-position: 0 172px
         &.five
-          :background-position 0 108px
+          background-position: 0 108px
         &.six
-          :background-position 0 44px
+          background-position: 0 44px
   ul li ul li
-    :font-family= !serif
-    :font-style italic
-    :color #343434
-    :padding-left 40px
+    font-family: $serif
+    font-style: italic
+    color: #343434
+    padding-left: 40px
   .light-title
-    :background transparent url(../images/textingit/light-txt_sprite.png) repeat-y 0 0
-    :text-indent -9000px
-    :margin-top 1em
-    :margin-bottom 0
+    background: transparent url(../images/textingit/light-txt_sprite.png) repeat-y 0 0
+    text-indent: -9000px
+    margin-top: 1em
+    margin-bottom: 0
   .who
-    :background-position 60px 70px
+    background-position: 60px 70px
     a
-      :display block
-      :text-indent -9000px
-      :width 310px
+      display: block
+      text-indent: -9000px
+      width: 310px
   .what
-    :font-size 2em
-    :margin-top 0.7em
-    :background-position 0 -9px
+    font-size: 2em
+    margin-top: 0.7em
+    background-position: 0 -9px
   .request
-    :background-position 40px 27px
-    :margin-bottom 1em
+    background-position: 40px 27px
+    margin-bottom: 1em
   .logo
     a
-      :display block
-      :height 3em
-      :background transparent url(../images/textingit/logo.png) repeat-y 0 0
+      display: block
+      height: 3em
+      background: transparent url(../images/textingit/logo.png) repeat-y 0 0
   .tagline
-    :background transparent url(../images/textingit/tagline.png) repeat-y 0 0
-    :margin 3em 0 3em 0
-    :text-indent -9000px
-    :height 30px
-    :font-size 1.5em
+    background: transparent url(../images/textingit/tagline.png) repeat-y 0 0
+    margin: 3em 0 3em 0
+    text-indent: -9000px
+    height: 30px
+    font-size: 1.5em
   ul.nav
-    :margin-bottom 6em
+    margin-bottom: 6em
     li
       a
-        :background transparent url(../images/textingit/nav.png) repeat 0 0
-        :height 45px
-        :display block
-        :margin-bottom 1em
-        :text-indent -9000px
+        background: transparent url(../images/textingit/nav.png) repeat 0 0
+        height: 45px
+        display: block
+        margin-bottom: 1em
+        text-indent: -9000px
       a.api-docs
-        :background-position 0 0
+        background-position: 0 0
         &:hover
-          :background-position 242px 0
+          background-position: 242px 0
       a.about-us
-        :background-position 0 117px
+        background-position: 0 117px
         &:hover
-          :background-position 285px 117px
+          background-position: 285px 117px
       a.blog
-        :background-position 0 45px
+        background-position: 0 45px
         &:hover
-          :background-position 175px 45px
+          background-position: 175px 45px
