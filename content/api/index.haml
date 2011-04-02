@@ -10,7 +10,7 @@ filter:
 layout: api
 extension: html
 dirty: true
-version: 1.4
+version: 1.5
 sitename: The SMS API
 ---
 
@@ -27,6 +27,8 @@ sitename: The SMS API
         %a{ :href => "#api-messaging" }  Messaging
       %li
         %a{ :href => "#api-subscriptions" }  Subscriptions
+      %li
+        %a{ :href => "#api-carriers" }  Carriers        
   .span-6
     %h2
       %a{ :href => "#callbacks" }Callbacks
@@ -99,6 +101,9 @@ sitename: The SMS API
     #api-subscriptions
       %h1.subtitle Subscriptions
       = render :partial => "api/api/subscriptions"
+    #api-carriers
+      %h1.subtitle Subscriptions
+      = render :partial => "api/api/carriers"
   #callbacks.span-20.prepend-1.append-1.last
     %h2.header Callbacks
     #callbacks-general
