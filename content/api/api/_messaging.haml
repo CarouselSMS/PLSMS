@@ -13,7 +13,7 @@ If an application needs to send a message to a certain phone number, it uses thi
 * (2/3) ... continuation ...
 * (3/3) ... the ending.
 
-Scheduled messages are sent in batches every 15 minutes. The format of the date ("on" field) may vary from very strict “10/12/2008 12:55AM -0500” to the relaxed “Tuesday 9 1:15PM”. If the timezone isn’t specified, the EST (GMT-5) is assumed.
+Scheduled messages are sent in batches every 15 minutes. The format of the date ("on" field) may vary from very strict “10/12/2008 12:55AM — 0500” to the relaxed “Tuesday 9 1:15PM”. If the timezone isn’t specified, the EST (GMT-5) is assumed.
 
 *Split Modes:*
 
@@ -37,7 +37,10 @@ Responses:
 
 * HTTP Code 500 and error message in the body
 * HTTP Code 200
-** Comma-separated list of scheduled message IDs is returned with the "message_ids" key. This is useful for matching sent messages with delivery reports and message cancellation.
+** Comma-separated list of scheduled message IDs is returned with the "message_ids" key. This is useful for matching sent messages with delivery reports and message cancellation. Negative IDs are possible in these cases:
+*** &#45;1 -- if phone number was invalid
+*** &#45;2 -- if phone number is currently blacklisted
+*** &#45;3 -- if phone is being flooded reached the limit of messages for a configured period of time for this app
 
 
 
