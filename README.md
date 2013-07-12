@@ -10,5 +10,11 @@ It's been a while, but I believe this is forked originally from [reinh](https://
 [![API](http://dl.dropbox.com/u/225019/rm-app-screenshots/PLSMS/thumb_Recess%20Mobile%20%E2%80%94%20SMS%20API%20documentation.png)](http://dl.dropbox.com/u/225019/rm-app-screenshots/PLSMS/Recess%20Mobile%20%E2%80%94%20SMS%20API%20documentation.png)
 
 
+License
+=======
+
+Private Label SMS is Copyright © 2013 [Recess Mobile](http://recess.im/).
+
+It is free software, and may be redistributed under the terms specified in the MIT-LICENSE file.
 
 
